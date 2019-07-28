@@ -1,0 +1,52 @@
+{
+  "currency"  :  {
+      "" :"гривня",
+      "" : "гривень",
+      "" : "гривні",
+      "" : "копійка",
+      "" : "копійок",
+      "" : "копійки"
+  },
+  "number_system" : {
+    "nothing":"",
+    "thousand":"тисяча",
+    "million":"мільйон",
+    "billion":"мільрд", 
+    "trillion":"трилільйон"
+  },
+  "number_dg" : {
+    "zero":"нуль",
+    "one":"один",
+    "two":"два",
+    "three":"три",
+    "four":"чотире",
+    "five":"п'ять",
+    "six":"шість",
+    "seven":"",
+    "eight":"",
+    "nine":""
+  },
+  "number_tn": {
+    "ten":"",
+    "eleven":"",
+    "twelve":"",
+    "thirteen":"",
+    "fourteen":"",
+    "fifteen":"",
+    "sixteen":"",
+    "seventeen":"",
+    "eighteen":"",
+    "nineteen":""
+  },
+  "number_tw": {
+    "twenty":"",
+    "thirty":"",
+    "forty":"",
+    "fifty":"",
+    "sixty":"",
+    "seventy":"",
+    "eighty":"",
+    "ninety":""
+  }
+
+}

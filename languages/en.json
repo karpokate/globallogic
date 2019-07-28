@@ -1,0 +1,49 @@
+{
+    "currency"  :  {
+        "" :"dolar",
+        "" : "dolars",
+        "" : "cent",
+        "" : "cents"
+    },
+    "number_system" : {
+      "nothing":"",
+      "thousand":"thousand",
+      "million":"million",
+      "billion":"billion", 
+      "trillion":"trillion"
+    },
+    "number_dg" : {
+      "zero":"zero",
+      "one":"one",
+      "two":"two",
+      "three":"three",
+      "four":"four",
+      "five":"five",
+      "six":"six",
+      "seven":"seven",
+      "eight":"eight",
+      "nine":"nine"
+    },
+    "number_tn": {
+      "ten":"ten",
+      "eleven":"eleven",
+      "twelve":"twelve",
+      "thirteen":"thirteen",
+      "fourteen":"fourteen",
+      "fifteen":"fifteen",
+      "sixteen":"sixteen",
+      "seventeen":"seventeen",
+      "eighteen":"eighteen",
+      "nineteen":"nineteen"
+    },
+    "number_tw": {
+      "twenty":"twenty",
+      "thirty":"thirty",
+      "forty":"forty",
+      "fifty":"fifty",
+      "sixty":"sixty",
+      "seventy":"seventy",
+      "eighty":"eighty",
+      "ninety":"ninety"
+    }
+}

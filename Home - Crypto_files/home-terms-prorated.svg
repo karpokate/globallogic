@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <title>home-terms-prorated</title>
+  <g style="isolation: isolate">
+    <g id="2e5e5646-a9a0-4b89-9e6c-ac9439964e14" data-name="figures and interactions">
+      <circle cx="16" cy="17.76" r="9.79" style="fill: none;stroke: #2bd4d9;stroke-miterlimit: 10;stroke-width: 3px"/>
+      <polyline points="25.17 17.76 16.6 17.76 18.35 12.24" style="fill: none;stroke: #5333ed;stroke-linecap: round;stroke-linejoin: round;stroke-width: 3px;mix-blend-mode: multiply"/>
+      <line x1="12.85" y1="4.58" x2="19.15" y2="4.58" style="fill: none;stroke: #2bd4d9;stroke-linecap: round;stroke-linejoin: round;stroke-width: 3px"/>
+    </g>
+  </g>
+</svg>
