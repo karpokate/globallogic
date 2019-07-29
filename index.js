@@ -145,7 +145,6 @@ function writtenNumber(n, options) {
       }
       continue;
     }
-    if(n>1) 
 
     // условие для использования окончаний 
     var str;
