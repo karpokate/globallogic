@@ -37,5 +37,7 @@ writtenNumber(1234, {lang: 'uk'});
 
 ```
 
-0 - cents 
+  Functions that doesn`t works : 
+     coma in input, only dot. 
+     1234567.89
 

@@ -42,10 +42,14 @@
     "unitExceptions": [],
     "moneyBig" : [
       "dollar",
+      "dollars",
+      "dollars",
       "dollars"
     ],
     "moneySmall" : [
-     "cent",
+       "cent",
+       "cents" ,
+       "cents" ,
        "cents" 
     ]
   }

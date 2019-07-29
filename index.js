@@ -46,12 +46,10 @@ function writtenNumber(n, options) {
     return "enter smaller value";
   }
   //copy value n & получаем остаток от деления 
-  let num = n;
-  let decNum= (num*100)%100
+  let decNum= (n*100)%100
 
   //округление
-  n = Math.round(+n);
-  num = Math.round(+n);
+  n = Math.floor(n);
   
   //округление до 2х знаков после запятой 
   //n.toFixed(2);
@@ -117,22 +115,6 @@ function writtenNumber(n, options) {
       ret.push(language.unitSeparator + writtenNumber(m, options));
     }
   }
-
-  let cash = language.moneyBig
-    if (num>1){
-      cash = language.moneyBig.plural
-    }
-    else {
-      cash = language.moneyBig.sing
-    }
-  let cent = language.moneySmall 
-    if (decNum>1) {
-      cent = language.moneySmall.plural
-    }
-    else {
-      cent = language.moneySmall.sing
-    }
-
   var firstSignificant;
 
 
@@ -243,19 +225,25 @@ function writtenNumber(n, options) {
   //result input
   var result = ret.reverse().join(" ") 
   return result;
- }
+}
+ 
 function money(k, base)
 {
+  if (k==1){
+    return base[0]
+  }
+  k%=100;
   if (k>20){
     k=k%10
   }
   
+  
   if (k==1){
-    return base[0]
+    return base[1]
   }
   else {
     if(k>1 && k<5){
-      return base[1]
+      return base[2]
     }
     else 
       return base[base.length-1]
@@ -279,18 +267,18 @@ function start (n,options){
     language = i18n[writtenNumber.defaults.lang];
   }
 
-  let result= writtenNumber (n,options)+" "+money(Math.floor(n)%100, language.moneyBig)+" "+writtenNumber(decNum,options)+ " " + money (decNum, language.moneySmall)
+  let result= writtenNumber (n,options)+" "+money(Math.trunc(n), language.moneyBig)+" "+writtenNumber(decNum,options)+ " " + money (decNum, language.moneySmall)
 return result
 }
-function handleSmallerThan100(n, language, unit, base, alternativeBaseCardinals, options) {
+function handleSmallerThan100(n, language, unit, baseCardinals, alternativeBaseCardinals, options) {
   var dec = Math.floor(n / 10) * 10;
   unit = n - dec;
   if (unit) {
     return (
-      alternativeBaseCardinals[dec] || base[dec] + language.baseSeparator + writtenNumber(unit, options)
+      alternativeBaseCardinals[dec] || baseCardinals[dec] + language.baseSeparator + writtenNumber(unit, options)
     );
   }
-  return alternativeBaseCardinals[dec] || base[dec];
+  return alternativeBaseCardinals[dec] || baseCardinals[dec];
 }
 
 
