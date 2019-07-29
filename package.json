@@ -1,28 +1,8 @@
 {
-  "name": "written-number",
+  "name": "test",
   "version": "0.11.0",
   "description": "Convert numbers to words - their written form.",
-  "main": "lib/index.js",
-  "scripts": {
-    "test": " mocha --require blanket -R mocha-spec-cov-alt"
-  },
-  "keywords": [
-    "written",
-    "number",
-    "english",
-    "int",
-    "word",
-    "words",
-    "numbers to words",
-    "human",
-    "spoken"
-  ],
-  "author": "Pedro Tacla Yamada",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yamadapc/js-written-number"
-  },
+  "main": "index.js",
   "devDependencies": {
     "blanket": "1.1.7",
     "grunt": "^1.0.3",
