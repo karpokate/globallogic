@@ -51,6 +51,8 @@ function writtenNumber(n, options) {
 
   //округление
   n = Math.round(+n);
+  num = Math.round(+n);
+  
   //округление до 2х знаков после запятой 
   //n.toFixed(2);
   //let cent = n%1;
@@ -67,7 +69,7 @@ function writtenNumber(n, options) {
 
     language = i18n[writtenNumber.defaults.lang];
   }
-  
+ 
   var scale = language.useLongScale ? longScale : shortScale;
   //сотни, тысячи и тд
   var units = language.units;
@@ -83,7 +85,6 @@ function writtenNumber(n, options) {
       scale[i] = Math.pow(10, parseInt(scale[i]));
     }
   }
-
   //цифры 
   var baseCardinals = language.base;
   //в украинском - это феминитив (одна, дві)
@@ -117,7 +118,23 @@ function writtenNumber(n, options) {
     }
   }
 
+  let cash = language.moneyBig
+    if (num>1){
+      cash = language.moneyBig.plural
+    }
+    else {
+      cash = language.moneyBig.sing
+    }
+  let cent = language.moneySmall 
+    if (decNum>1) {
+      cent = language.moneySmall.plural
+    }
+    else {
+      cent = language.moneySmall.sing
+    }
+
   var firstSignificant;
+
 
   for (var i = 0, len = units.length; i < len; i++) {
     var r = Math.floor(n / scale[i]);
@@ -146,6 +163,7 @@ function writtenNumber(n, options) {
       }
       continue;
     }
+    if(n>1) 
 
     // условие для использования окончаний 
     var str;
@@ -168,6 +186,8 @@ function writtenNumber(n, options) {
       // "restrictedPlural" : use plural only for 3 to 10
       str = (r > 10 && unit.restrictedPlural) ? unit.singular : str;
     }
+
+    
 
     if (
       unit.avoidPrefixException &&
@@ -196,6 +216,9 @@ function writtenNumber(n, options) {
     ret.push(number + " " + str );
   }
 
+  //method for money (moneyBig && moneySmall)
+  
+
   var firstSignificantN = firstSignificant * Math.floor(n / firstSignificant);
   var rest = n - firstSignificantN;
 
@@ -218,7 +241,7 @@ function writtenNumber(n, options) {
   }
   
   //result input
-  var result = ret.reverse().join(" ") + " " + handleSmallerThan100(decNum, language, unit, baseCardinals, alternativeBaseCardinals, options);
+  var result = ret.reverse().join(" ") + " "  + cash + " "+ handleSmallerThan100(decNum, language, unit, baseCardinals, alternativeBaseCardinals, options)+ " "+ cent ;
   //if you want govnocode
   //+ " "+language.moneyBig.plural;
   
