@@ -23,7 +23,6 @@ language.json file in the folder "lang".
 input it in console 
 ```
 node 
-
 ```
 after that 
 ```
@@ -36,5 +35,6 @@ writtenNumber(4758);
 writtenNumber(1234, {lang: 'uk'});
 
 ```
+
 
 
