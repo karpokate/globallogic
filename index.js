@@ -7,8 +7,8 @@ var util = require("./util");
 var languages = ["en",  "uk"];
 //connect json files with lang support
 var i18n = {
-  en: require("./lang/en.json"),
-  uk: require("./lang/uk.json"),
+  en: require("./lang/en.json"), //english
+  uk: require("./lang/uk.json"), //ukrainian
 };
 exports.i18n = i18n;
 
@@ -45,6 +45,10 @@ function writtenNumber(n, options) {
   if (n>2147483649){
     return "enter smaller value";
   }
+  //copy value n & получаем остаток от деления 
+  let num = n;
+  let decNum= (num*100)%100
+
   //округление
   n = Math.round(+n);
   //округление до 2х знаков после запятой 
@@ -65,12 +69,12 @@ function writtenNumber(n, options) {
   }
   
   var scale = language.useLongScale ? longScale : shortScale;
+  //сотни, тысячи и тд
   var units = language.units;
   var unit;
 
   if (!(units instanceof Array)) {
     var rawUnits = units;
-
     units = [];
     scale = Object.keys(rawUnits);
 
@@ -80,18 +84,26 @@ function writtenNumber(n, options) {
     }
   }
 
+  //цифры 
   var baseCardinals = language.base;
+  //в украинском - это феминитив (одна, дві)
   var alternativeBaseCardinals = options.alternativeBase 
     ? language.alternativeBase[options.alternativeBase]
     : {};
 
+    //сотни, тисячі і тд (для укр)
   if (language.unitExceptions[n]) return language.unitExceptions[n];
   if (alternativeBaseCardinals[n]) return alternativeBaseCardinals[n];
   if (baseCardinals[n]) return baseCardinals[n];
+
+  //начало условий (для меньше 100)
   if (n < 100)
     return handleSmallerThan100(n, language, unit, baseCardinals, alternativeBaseCardinals, options);
+  
 
+    //остаток от деленія  (два последних элемента)
   var m = n % 100;
+  //массив в которий все засовиваем
   var ret = [];
 
   if (m) {
@@ -135,6 +147,7 @@ function writtenNumber(n, options) {
       continue;
     }
 
+    // условие для использования окончаний 
     var str;
     if (typeof unit === "string") {
       str = unit;
@@ -180,7 +193,7 @@ function writtenNumber(n, options) {
         )
       );
     n -= r * scale[i];
-    ret.push(number + " " + str);
+    ret.push(number + " " + str );
   }
 
   var firstSignificantN = firstSignificant * Math.floor(n / firstSignificant);
@@ -203,7 +216,12 @@ function writtenNumber(n, options) {
       ret[j] = language.allSeparator + ret[j];      
     }
   }
-  var result = ret.reverse().join(" ");
+  
+  //result input
+  var result = ret.reverse().join(" ") + " " + handleSmallerThan100(decNum, language, unit, baseCardinals, alternativeBaseCardinals, options);
+  //if you want govnocode
+  //+ " "+language.moneyBig.plural;
+  
   return result;
 }
 

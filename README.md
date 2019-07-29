@@ -27,7 +27,7 @@ node
 ```
 after that 
 ```
-var writtenNumber = require('written-number');
+var writtenNumber = require('./index.js');
 writtenNumber(1234); 
 
 writtenNumber.defaults.lang = 'uk';
