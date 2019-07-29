@@ -1,6 +1,6 @@
 "use strict";
 
-exports = module.exports = writtenNumber;
+exports = module.exports = start;
 var util = require("./util");
 
 //add lang into array
@@ -241,20 +241,57 @@ function writtenNumber(n, options) {
   }
   
   //result input
-  var result = ret.reverse().join(" ") + " "  + cash + " "+ handleSmallerThan100(decNum, language, unit, baseCardinals, alternativeBaseCardinals, options)+ " "+ cent ;
-  //if you want govnocode
-  //+ " "+language.moneyBig.plural;
-  
+  var result = ret.reverse().join(" ") 
   return result;
+ }
+function money(k, base)
+{
+  if (k>20){
+    k=k%10
+  }
+  
+  if (k==1){
+    return base[0]
+  }
+  else {
+    if(k>1 && k<5){
+      return base[1]
+    }
+    else 
+      return base[base.length-1]
+  }
 }
+function start (n,options){
+  options = options || {};
+  let num = n;
+  let decNum= (num*100)%100
 
-function handleSmallerThan100(n, language, unit, baseCardinals, alternativeBaseCardinals, options) {
+  var language = typeof options.lang === "string"
+    ? i18n[options.lang]
+    : options.lang;
+
+    //default language - english
+  if (!language) {
+    if (languages.indexOf(writtenNumber.defaults.lang) < 0) {
+      writtenNumber.defaults.lang = "en";
+    }
+
+    language = i18n[writtenNumber.defaults.lang];
+  }
+
+  let result= writtenNumber (n,options)+" "+money(Math.floor(n)%100, language.moneyBig)+" "+writtenNumber(decNum,options)+ " " + money (decNum, language.moneySmall)
+return result
+}
+function handleSmallerThan100(n, language, unit, base, alternativeBaseCardinals, options) {
   var dec = Math.floor(n / 10) * 10;
   unit = n - dec;
   if (unit) {
     return (
-      alternativeBaseCardinals[dec] || baseCardinals[dec] + language.baseSeparator + writtenNumber(unit, options)
+      alternativeBaseCardinals[dec] || base[dec] + language.baseSeparator + writtenNumber(unit, options)
     );
   }
-  return alternativeBaseCardinals[dec] || baseCardinals[dec];
+  return alternativeBaseCardinals[dec] || base[dec];
 }
+
+
+

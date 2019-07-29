@@ -40,12 +40,12 @@
       "trillion"
     ],
     "unitExceptions": [],
-    "moneyBig" : {
-      "sing": "dollar",
-      "plural" : "dollars" 
-    },
-    "moneySmall" : {
-      "sing": "cent",
-      "plural" : "cents" 
-    }
+    "moneyBig" : [
+      "dollar",
+      "dollars"
+    ],
+    "moneySmall" : [
+     "cent",
+       "cents" 
+    ]
   }

@@ -37,5 +37,5 @@ writtenNumber(1234, {lang: 'uk'});
 
 ```
 
-
+0 - cents 
 
