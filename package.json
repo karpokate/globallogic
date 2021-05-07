@@ -5,7 +5,7 @@
   "main": "index.js",
   "devDependencies": {
     "blanket": "1.1.7",
-    "grunt": "^1.0.3",
+    "grunt": "^1.3.0",
     "grunt-browserify": "^5.3.0",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^1.1.0",
